@@ -70,3 +70,24 @@ class LinkedList:
                 new_node.next = current.next
                 current.next = new_node
             self.num_of_data += 1
+
+    def remove(self, key):
+        current = self.head
+        prev = None
+        count = 0
+        while current:
+            if current.data == key:
+                if prev:
+                    prev.next = current.next
+                else:
+                    self.head = current.next
+                self.num_of_data -= 1
+                count += 1
+            else:
+                prev = current
+            current = current.next
+
+        if count == 0:
+            print("해당하는 원소가 없습니다.")
+        else:
+            print(f"{count}개의 '{key}' 원소가 삭제되었습니다.")
